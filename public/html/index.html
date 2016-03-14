@@ -4,21 +4,37 @@
     <title> Welcome to MEAN Todos </title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js'></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css'/>
+    <style>
+      body{
+        margin-top: 10px;
+        background-color: #669999;
+     }
+      input#saveTodo{
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      ul{
+        list-style-type: none;
+      }
+
+    </style>
   </head>
   <body ng-controller='TodoController'>
     <div class='container'>
       <form ng-submit="saveTodo()">
-        <input type="text" ng-model="newTodo.desc">
+        <input id="saveTodo" type="text" ng-model="newTodo.desc">
         <button type="submit">Save Todo</button>
       </form>
-      <div ng-if='isEditing'>
+      <!-- <div ng-if='isEditing'>
         <input type="text" ng-model='editingTodo.desc'>
         <button type="button" ng-click="updateTodo(editingTodo)">Update</button>
-      </div>
+      </div> -->
       <ul>
         <li ng-repeat="todo in todos" class="alert alert-info">
           {{todo.desc}}
           <button type="button" class='btn btn-sm btn-danger' ng-click="deleteTodo(todo)">X</button>
+          <input type="text" ng-model='editingTodo.desc' ng-if='isEditing'>
+          <button type="button" ng-click="updateTodo(editingTodo)">Update</button>
           <button type="button" ng-click="editTodo(todo)">Edit</button>
         </li>
       </ul>

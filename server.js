@@ -9,7 +9,7 @@ var express = require('express'),
     var todoSchema = new Schema({
       desc: {
         type: String,
-        required: true
+        // required: true
       },
       completed: {
         type: Boolean,
@@ -18,8 +18,8 @@ var express = require('express'),
       },
     });
 
-    var Todo = mongoose.model('Todo', todoSchema);
-    mongoose.connect('mongodb://localhost/todoApp');
+var Todo = mongoose.model('Todo', todoSchema);
+mongoose.connect('mongodb://localhost/todoApp');
 var port = process.env.PORT || 9000;
 
 server.use(express.static(path.join(__dirname,'public')));
@@ -45,10 +45,16 @@ server.post('/api/todos', function(req,res){
     desc: desc,
     completed: false
   };
-  Todo.create(todoObj, function(err, todo){
+  var todo = new Todo(todoObj);
+  todo.save(function(err, todo){
     if(err) throw err;
+
     res.json(todo);
   });
+  // Todo.create(todoObj, function(err, todo){
+  //   if(err) throw err;
+  //   res.json(todo);
+  // });
 });
 
 server.put('/api/todos/:id', function(req, res){
