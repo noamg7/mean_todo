@@ -3,9 +3,9 @@ var express = require('express'),
     path    = require('path'),
     mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bodyParser = require('body-parser')
-    server  = express();
-    Todo = require('./models/todo.model.js');
+    bodyParser = require('body-parser'),
+    server  = express(),
+    Todo = require('./models/todo.model.js'),
     TodoCtrl = require('./controllers/todo.controller.js');
 
 
@@ -24,8 +24,8 @@ server.get('/', function(req, res){
 
 server.get('/api/todos', TodoCtrl.getAll);
 server.post('/api/todos', TodoCtrl.create);
-server.put('/api/todos/:id', TodoCrl.update);
-server.delete('/api/todos/:id', TodoCrl.delete);
+server.put('/api/todos/:id', TodoCtrl.update);
+server.delete('/api/todos/:id', TodoCtrl.delete);
 
 server.listen(port, function(){
   console.log('Now listening on port ' + port);
