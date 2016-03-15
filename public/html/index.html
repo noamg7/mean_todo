@@ -8,6 +8,7 @@
       body{
         margin-top: 10px;
         background-color: #669999;
+        color: #000000;
      }
       input#saveTodo{
         margin-top: 10px;
@@ -29,6 +30,7 @@
         <input type="text" ng-model='editingTodo.desc'>
         <button type="button" ng-click="updateTodo(editingTodo)">Update</button>
       </div> -->
+      <h1>This list has no meaning</h1>
       <ul>
         <li ng-repeat="todo in todos" class="alert alert-info">
           {{todo.desc}}
