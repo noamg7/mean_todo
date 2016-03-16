@@ -3,7 +3,7 @@ var todoCtrl = {
   getAll: getAllTodos,
   create: createTodo,
   update: updateTodo,
-  delete: deleteTodo
+  delete: deleteTodo,
 };
 
 function getAllTodos(req,res){

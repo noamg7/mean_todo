@@ -26,6 +26,7 @@ function TodoController($scope, $http){
   $scope.editTodo = function(todo){
     $scope.isEditing = !$scope.isEditing;
     $scope.editingTodo = todo;
+    todo.edit = true;
   }
   $scope.updateTodo = function(todo){
     $http.put('/api/todos/'+todo._id, todo)
@@ -36,6 +37,7 @@ function TodoController($scope, $http){
     .catch(function(err){
       console.log(err);
     });
+    todo.edit = false;
   }
   function initTodos(){
     $http.get('/api/todos')
